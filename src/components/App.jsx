@@ -13,17 +13,15 @@ const App = () => {
   ]);
   const [filter, setFilter] = useState('');
 
-  // useEffect(() => {
-  //   if (contacts.length > 0) {
-  //     const objJSON = JSON.stringify(contacts);
-  //     localStorage.setItem('contacts', objJSON);
-  //   }
-  // }, [contacts]);
+  useEffect(() => {
+    const objJSON = JSON.stringify(contacts);
+    localStorage.setItem('contacts', objJSON);
+  }, [contacts]);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('contacts'));
-    if (data) {
-      setContacts([data]);
+    if (data.length > 0) {
+      setContacts(data);
     }
   }, []);
 
@@ -36,6 +34,7 @@ const App = () => {
       setContacts([...contacts, { ...contact, id: nanoid() }]);
     }
   };
+
   const onInputChange = e => {
     setFilter(e.target.value);
   };

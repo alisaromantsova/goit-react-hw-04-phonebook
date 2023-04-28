@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 import { ContactItem } from '../ContactItem/ContactItem';
 export const Contacts = ({ onDelete, contacts, filter }) => {
+  console.log(contacts);
   return (
     <div className={css.container}>
       <h2>Contacts</h2>
