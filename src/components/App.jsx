@@ -5,12 +5,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { useState, useEffect } from 'react';
 const App = () => {
-  const [contacts, setContacts] = useState([
-    { id: nanoid(4), name: 'Rosie Simpson', number: '459-12-56' },
-    { id: nanoid(4), name: 'Hermione Kline', number: '443-89-12' },
-    { id: nanoid(4), name: 'Eden Clements', number: '645-17-79' },
-    { id: nanoid(4), name: 'Annie Copeland', number: '227-91-26' },
-  ]);
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -20,9 +15,8 @@ const App = () => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('contacts'));
-    if (data.length > 0) {
-      setContacts(data);
-    }
+
+    setContacts(data);
   }, []);
 
   const onSubmit = contact => {
