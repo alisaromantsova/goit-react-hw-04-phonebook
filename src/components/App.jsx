@@ -5,7 +5,9 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { useState, useEffect } from 'react';
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('contacts')) || []
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -13,11 +15,11 @@ const App = () => {
     localStorage.setItem('contacts', objJSON);
   }, [contacts]);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('contacts'));
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem('contacts'));
 
-    setContacts(data);
-  }, []);
+  //   setContacts(data);
+  // }, []);
 
   const onSubmit = contact => {
     const result = contacts.find(item => item.name === contact.name);
